@@ -1,0 +1,23 @@
+# Enable URL rewriting
+RewriteEngine On
+
+# Serve static files (CSS, JS, images, and fonts) directly from the public folder
+RewriteCond %{REQUEST_FILENAME} !-f
+RewriteCond %{REQUEST_FILENAME} !-d
+RewriteRule ^css/(.*)$ /public/css/$1 [L]
+RewriteRule ^js/(.*)$ /public/js/$1 [L]
+RewriteRule ^img/(.*)$ /public/img/$1 [L]
+RewriteRule ^fonts/(.*)$ /public/fonts/$1 [L]
+RewriteRule ^profile/(.*)$ /public/profile/$1 [L]
+# Redirect root URL to index.html
+RewriteRule ^$ /views/index.html [L]
+
+# Serve index.html from the views folder for specific folders
+RewriteCond %{REQUEST_FILENAME} !-f
+RewriteCond %{REQUEST_FILENAME} !-d
+RewriteRule ^incharge/?$ /views/incharge/index.html [L]
+
+# Serve HTML files from the views folder
+RewriteCond %{REQUEST_FILENAME} !-f
+RewriteCond %{REQUEST_FILENAME} !-d
+RewriteRule ^(.*)$ /views/$1.html [L]
