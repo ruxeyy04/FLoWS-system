@@ -21,3 +21,6 @@ RewriteRule ^incharge/?$ /views/incharge/index.html [L]
 RewriteCond %{REQUEST_FILENAME} !-f
 RewriteCond %{REQUEST_FILENAME} !-d
 RewriteRule ^(.*)$ /views/$1.html [L]
+
+RewriteCond %{REQUEST_URI} ^/\.env$
+RewriteRule ^ - [R=404,L]
